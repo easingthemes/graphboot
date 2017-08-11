@@ -8,7 +8,7 @@ import Pathways from '../Pathways';
 
 import Header from '../../components/Header';
 import "./styles.css";
-import CalendarHeatmap from 'react-calendar-heatmap';
+
 
 import selectUser from './selectors';
 import {
@@ -28,15 +28,7 @@ class App extends Component {
           user={this.props.user}
         />
         <div className="container">
-          <CalendarHeatmap
-            endDate={new Date('2016-04-01')}
-            numDays={100}
-            values={[
-              { date: '2016-01-01' },
-              { date: '2016-01-22' },
-              { date: '2016-01-30' }
-            ]}
-          />
+
           <Route exact path="/" component={Home}/>
           <Route path="/pathways" component={Pathways} />
         </div>

@@ -25,7 +25,7 @@
     "oauth": "^0.9.15",
     "prop-types": "^15.5.10",
     "react": "next",
-    "react-calendar-heatmap": "^1.2.0",
+    "react-calendar-heatmap": "git+https://git@github.com/easingthemes/react-calendar-heatmap.git",
     "react-dom": "next",
     "react-markdown": "^2.5.0",
     "react-redux": "^5.0.5",

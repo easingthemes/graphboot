@@ -5407,6 +5407,13 @@ react-calendar-heatmap@^1.2.0:
     lodash.range "^3.1.4"
     lodash.reduce "^4.3.0"
 
+"react-calendar-heatmap@git+https://git@github.com/easingthemes/react-calendar-heatmap.git":
+  version "1.2.0"
+  resolved "git+https://git@github.com/easingthemes/react-calendar-heatmap.git#e4ece4906943db7189dcf1b6f591b2b4461682ec"
+  dependencies:
+    lodash.range "^3.1.4"
+    lodash.reduce "^4.3.0"
+
 react-dev-utils@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-3.0.2.tgz#1a42263e9b6aa11dcb45d69dfe5eb1b354bd5531"
