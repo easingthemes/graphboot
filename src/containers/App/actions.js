@@ -1,4 +1,5 @@
 import axios from 'axios';
+import cookie from 'cookie-machine';
 
 import { filterUser } from '../../helpers/filterUser';
 
