@@ -68,12 +68,14 @@ if(get('code')) {
 
 if(session('access_token')) {
   $user = apiRequest($apiURLBase . 'user');
+  $graph = apiRequest('https://github.com/users/easingthemes/contributions');
 
   echo '<h3>Logged In</h3>';
   echo '<h4>' . $user->name . '</h4>';
   echo '<pre>';
   print_r($user);
   echo '</pre>';
+  print_r($graph);
   echo '<div id="root"></div>';
   echo '<script type="text/javascript" src="/static/js/main.80b7ae55.js"></script>';
 
