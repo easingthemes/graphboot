@@ -1,4 +1,5 @@
 <?php
+define('YOUR_APP_NAME', 'graphboot');
 define('OAUTH2_CLIENT_ID', 'f30606c2ad5e4a14afe7');
 define('OAUTH2_CLIENT_SECRET', '87484dd0b03d7c49d35c15c054e74eb4b0484b86');
 
@@ -94,6 +95,7 @@ function apiRequest($url, $post=FALSE, $headers=array()) {
   if(session('access_token'))
     $headers[] = 'Authorization: Bearer ' . session('access_token');
 
+  $headers[] = 'User-Agent: YOUR_APP_NAME';
   curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
   $response = curl_exec($ch);
