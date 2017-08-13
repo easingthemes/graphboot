@@ -17,7 +17,7 @@ import {
 
 class App extends Component {
   componentDidMount() {
-    //this.props.handleGetUser('easingthemes');
+    this.props.handleGetUser('easingthemes');
   }
 
   render() {
