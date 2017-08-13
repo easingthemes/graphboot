@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-  <meta name="theme-color" content="#000000">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <title>Badges</title>
-  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-  <link href="/static/css/main.685015e3.css" rel="stylesheet">
-</head>
-<body>
-<noscript>You need to enable JavaScript to run this app.</noscript>
 <?php
 define('OAUTH2_CLIENT_ID', 'f30606c2ad5e4a14afe7');
 define('OAUTH2_CLIENT_SECRET', '87484dd0b03d7c49d35c15c054e74eb4b0484b86');
@@ -60,6 +46,24 @@ if(get('code')) {
 
   header('Location: ' . $_SERVER['PHP_SELF']);
 }
+
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title>Badges</title>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <link href="/static/css/main.685015e3.css" rel="stylesheet">
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<?php
 
 if(session('access_token')) {
   $user = apiRequest($apiURLBase . 'user');
