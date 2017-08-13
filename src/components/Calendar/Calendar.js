@@ -40,9 +40,11 @@ function customOnClick(value) {
 }
 
 const customTooltipDataAttrs = value => {
+  const tipFor = value.date ? Date.parse(value.date) : 'empty';
+  const tip = value.date ? value.date.toDateString() : 'empty';
     return {
-        'data-for': `tip-${Date.parse(value.date)}`,
-        'data-tip': `${value.count ? value.count : 'No'} contributions on ${value.date.toDateString()}`
+        'data-for': `tip-${tipFor}`,
+        'data-tip': `${value.count ? value.count : 'No'} contributions on ${tip}`
     }
 };
 

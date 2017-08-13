@@ -79,7 +79,7 @@ if(session('access_token')) {
   print_r($graph);
   echo '</pre>';
   echo '<div id="root"></div>';
-  echo '<script type="text/javascript" src="/static/js/main.80b7ae55.js"></script>';
+  echo '<script type="text/javascript" src="/static/js/main.04aaa4f6.js"></script>';
 
 } else {
   echo '<h3>Not logged in</h3>';
