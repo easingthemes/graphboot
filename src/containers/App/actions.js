@@ -16,7 +16,11 @@ export function defaultAction() {
 
 export function getUser(username) {
   return function(dispatch) {
-    axios.get(`https://github.com/users/${username}/contributions`)
+    axios.get(`https://github.com/users/${username}/contributions`, {
+      headers: {
+        Authorization: `Bearer ${window.TOKEN}`
+      }
+    })
     .then(response => {
       console.log('all',response.data);
       dispatch({
