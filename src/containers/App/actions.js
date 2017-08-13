@@ -21,7 +21,8 @@ export function getUser(username) {
       console.log('all',response.data);
       dispatch({
         type: GET_USER,
-        payload: filterUser(response.data)
+        payload: filterUser(response.data),
+        error: false
       });
       const $ = cheerio.load(response.data, { ignoreWhitespace: true, decodeEntities: true });
       const $weeks = $('g', 'g');
@@ -33,9 +34,11 @@ export function getUser(username) {
         console.log('days',days);
       })
     .catch(error => {
+      console.log('err', error);
       dispatch({
         type: GET_USER,
-        payload: error
+        payload: error,
+        error: true
       });
     })
   }
