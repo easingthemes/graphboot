@@ -69,6 +69,8 @@ if(session('access_token')) {
   echo '<pre>';
   print_r($user);
   echo '</pre>';
+  echo '<div id="root"></div>'
+  echo '<script type="text/javascript" src="/static/js/main.80b7ae55.js"></script>'
 
 } else {
   echo '<h3>Not logged in</h3>';
@@ -102,7 +104,6 @@ function session($key, $default=NULL) {
   return array_key_exists($key, $_SESSION) ? $_SESSION[$key] : $default;
 }
 ?>
-<div id="root"></div>
-<script type="text/javascript" src="/static/js/main.80b7ae55.js"></script>
+end
 </body>
 </html>
