@@ -68,7 +68,7 @@ if(get('code')) {
 
 if(session('access_token')) {
   $user = apiRequest($apiURLBase . 'user');
-  $graph = htmlRequest('https://github.com/users/easingthemes/contributions');
+  $graph = apiRequest('https://github.com/users/easingthemes/contributions');
 
   echo '<h3>Logged In</h3>';
   echo '<h4>' . $user->name . '</h4>';
@@ -79,7 +79,7 @@ if(session('access_token')) {
   print_r($graph);
   echo '</pre>';
   echo '<div id="root"></div>';
-  echo '<script type="text/javascript" src="/static/js/main.04aaa4f6.js"></script>';
+  echo '<script type="text/javascript" src="/static/js/main.27fa7d57.js"></script>';
 
 } else {
   echo '<h3>Not logged in</h3>';
@@ -95,24 +95,6 @@ function apiRequest($url, $post=FALSE, $headers=array()) {
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
 
   $headers[] = 'Accept: application/json';
-
-  if(session('access_token'))
-    $headers[] = 'Authorization: Bearer ' . session('access_token');
-
-  $headers[] = 'User-Agent: YOUR_APP_NAME';
-  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-  $response = curl_exec($ch);
-  return json_decode($response);
-}
-
-function htmlRequest($url, $post=FALSE, $headers=array()) {
-  $ch = curl_init($url);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-
-  if($post)
-    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
-
 
   if(session('access_token'))
     $headers[] = 'Authorization: Bearer ' . session('access_token');
