@@ -75,7 +75,7 @@ if(session('access_token')) {
   echo '<pre>';
   print_r($user);
   echo '</pre>';
-  echo '<pre>';
+  echo '<pre data-token="' . $_SESSION['access_token'] . '">';
   print_r($graph);
   echo '</pre>';
   echo '<div id="root"></div>';
