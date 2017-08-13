@@ -1,10 +1,9 @@
 import axios from 'axios';
-import cookie from 'cookie-machine';
+import cheerio from 'cheerio';
 
 import { filterUser } from '../../helpers/filterUser';
 
 import {
-  API_URL,
   DEFAULT_ACTION,
   GET_USER,
 } from './constants';
@@ -15,15 +14,24 @@ export function defaultAction() {
   };
 }
 
-export function getUser() {
+export function getUser(username) {
   return function(dispatch) {
-    axios.get(`${API_URL}users`)
+    axios.get(`https://github.com/users/${username}/contributions`)
     .then(response => {
+      console.log('all',response.data);
       dispatch({
         type: GET_USER,
         payload: filterUser(response.data)
       });
+      const $ = cheerio.load(response.data, { ignoreWhitespace: true, decodeEntities: true });
+      const $weeks = $('g', 'g');
+      const $days = $('rect', $weeks);
+
+      return $days;
     })
+      .then(days => {
+        console.log('days',days);
+      })
     .catch(error => {
       dispatch({
         type: GET_USER,

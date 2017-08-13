@@ -17,7 +17,7 @@ import {
 
 class App extends Component {
   componentDidMount() {
-    this.props.handleGetUser();
+    this.props.handleGetUser('easingthemes');
   }
 
   render() {
@@ -28,7 +28,6 @@ class App extends Component {
           user={this.props.user}
         />
         <div className="container">
-
           <Route exact path="/" component={Home}/>
           <Route path="/pathways" component={Pathways} />
         </div>

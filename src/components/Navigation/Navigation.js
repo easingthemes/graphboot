@@ -5,14 +5,10 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 
 class Navigation extends Component {
-
-
   render() {
     const location = this.props.location || {};
     const pathname = location.pathname;
-    const isBadgesPage = pathname.indexOf('badges') > -1;
-    const isPathwaysPage = pathname.indexOf('pathways') > -1;
-    const isMatrixPage = pathname.indexOf('matrix') > -1;
+    const isPath1Page = pathname.indexOf('path1') > -1;
     const user = this.props.user || {};
     const avatarUrls = user.avatarUrls || [];
     const avatarUrl = avatarUrls['32x32'];
@@ -35,25 +31,15 @@ class Navigation extends Component {
               <span className="icon-bar"></span>
             </button>
             <Link to="/" className="navbar-brand">
-              Badges App
+              App
             </Link>
           </div>
           <div id="navbar" className="navbar-collapse collapse">
             <ul className="nav navbar-nav navbar-left">
-              <li className={isPathwaysPage ? 'active' : ''}>
-                <Link to="/pathways">
-                  Pathways
+              <li className={isPath1Page ? 'active' : ''}>
+                <Link to="/path1">
+                  path1
                 </Link>
-              </li>
-              <li className={isMatrixPage ? 'active' : ''}>
-                <Link to={`/matrix`}>
-                  Matrices
-                </Link>
-              </li>
-              <li className={isBadgesPage ? 'active' : ''}>
-                <a>
-                  Badges
-                </a>
               </li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
