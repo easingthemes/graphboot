@@ -87,7 +87,6 @@ if(session('access_token')) {
   echo '<p><a href="?action=login">Log In</a></p>';
 }
 
-
 function apiRequest($url, $post=FALSE, $headers=array()) {
   $ch = curl_init($url);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
