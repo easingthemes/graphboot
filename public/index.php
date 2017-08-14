@@ -61,6 +61,7 @@ if(get('code')) {
   <title>Badges</title>
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
   <link href="/static/css/main.685015e3.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 <noscript>You need to enable JavaScript to run this app.</noscript>
