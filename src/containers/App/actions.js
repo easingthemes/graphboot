@@ -15,15 +15,9 @@ export function defaultAction() {
 }
 
 export function getUser(username) {
-  console.log(window.TOKEN);
   return function(dispatch) {
-    axios.get(`https://github.com/users/${username}/contributions`, {
-      headers: {
-        Authorization: `Bearer ${window.TOKEN}`
-      }
-    })
+    axios.get(`https://github.com/users/${username}/contributions`)
     .then(response => {
-      console.log('all',response.data);
       dispatch({
         type: GET_USER,
         payload: filterUser(response.data),
@@ -35,11 +29,10 @@ export function getUser(username) {
 
       return $days;
     })
-      .then(days => {
-        console.log('days',days);
-      })
+    .then(days => {
+      console.log('days',days);
+    })
     .catch(error => {
-      console.log('err', error);
       dispatch({
         type: GET_USER,
         payload: error,

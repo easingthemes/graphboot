@@ -18,7 +18,7 @@ import {
 class App extends Component {
   componentDidMount() {
     setTimeout(() => {
-      this.props.handleGetUser('easingthemes');
+      //this.props.handleGetUser('easingthemes');
     }, 1000);
   }
 
