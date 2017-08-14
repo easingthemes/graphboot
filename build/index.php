@@ -80,6 +80,7 @@ if(session('access_token')) {
   echo $graph;
   echo '</pre>';
   echo '<div id="root" data-token="' . session('access_token') . '"></div>';
+  echo '<script type="text/javascript">var TOKEN = ' . session('access_token') . '</script>';
   echo '<script type="text/javascript" src="/static/js/main.78ea58b3.js"></script>';
 
 } else {
