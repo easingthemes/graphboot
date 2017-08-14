@@ -68,7 +68,7 @@ if(get('code')) {
 
 if(session('access_token')) {
   $user = apiRequest($apiURLBase . 'user');
-  $graph = apiRequest('https://github.com/users/easingthemes/contributions');
+  $graph = htmlRequest('https://github.com/users/easingthemes/contributions');
 
   echo '<h3>Logged In</h3>';
   echo '<h4>' . $user->name . '</h4>';
@@ -104,6 +104,25 @@ function apiRequest($url, $post=FALSE, $headers=array()) {
 
   $response = curl_exec($ch);
   return json_decode($response);
+}
+
+function htmlRequest($url, $post=FALSE, $headers=array()) {
+  $ch = curl_init($url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+  if($post)
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
+
+  $headers[] = 'Accept: application/json';
+
+  if(session('access_token'))
+    $headers[] = 'Authorization: Bearer ' . session('access_token');
+
+  $headers[] = 'User-Agent: YOUR_APP_NAME';
+  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+  $response = curl_exec($ch);
+  return $response;
 }
 
 function get($key, $default=NULL) {
