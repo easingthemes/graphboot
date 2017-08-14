@@ -15,6 +15,7 @@ export function defaultAction() {
 }
 
 export function getUser(username) {
+  console.log(window.TOKEN);
   return function(dispatch) {
     axios.get(`https://github.com/users/${username}/contributions`, {
       headers: {
