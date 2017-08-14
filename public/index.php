@@ -77,9 +77,10 @@ if(session('access_token')) {
   echo '</pre>';
   echo '<pre data-token="' . $_SESSION['access_token'] . '">';
   print_r($graph);
+  echo $graph;
   echo '</pre>';
-  echo '<div id="root"></div>';
-  echo '<script type="text/javascript" src="/static/js/main.27fa7d57.js"></script>';
+  echo '<div id="root" data-token="' . session('access_token') . '"></div>';
+  echo '<script type="text/javascript" src="/static/js/main.91f8fc33.js"></script>';
 
 } else {
   echo '<h3>Not logged in</h3>';
