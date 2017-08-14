@@ -3,11 +3,14 @@ import { connect } from "react-redux";
 import Calendar from '../../components/Calendar'
 
 class Home extends Component {
+  handleClick(value) {
+    console.log(value);
+  }
+
   render() {
     return (
       <div>
-        Home page
-        <Calendar />
+        <Calendar handleClick={this.handleClick} />
       </div>
     );
   }
