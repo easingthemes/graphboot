@@ -3,14 +3,14 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { combineReducers } from 'redux-immutable';
 import thunkMiddleware from "redux-thunk";
 
-import pathwaysPageReducer from '../containers/Pathways/reducer';
-import globalReducer from '../containers/App/reducer';
+import toolTipReducer from '../containers/Tooltip/reducer';
+import calendarReducer from '../containers/Calendar/reducer';
 
 const initialState = fromJS({});
 
 const rootReducer = combineReducers({
-  pathwaysPage: pathwaysPageReducer,
-  global: globalReducer
+  tooltip: toolTipReducer,
+  calendar: calendarReducer
 });
 
 export default function configureStore() {
