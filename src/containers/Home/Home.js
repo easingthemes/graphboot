@@ -42,18 +42,10 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <div className="container">
-          <div className="row m-b-3">
-            <div className="col-xs-12 col-md-12">
-              <Calendar
-                initialValues={this.generateValuesObject(365)}
-                counter={30}
-              />
-            </div>
-            <div className="col-xs-12 col-md-6">
-            </div>
-          </div>
-        </div>
+        <Calendar
+          initialValues={this.generateValuesObject(365)}
+          counter={30}
+        />
       </div>
     );
   }

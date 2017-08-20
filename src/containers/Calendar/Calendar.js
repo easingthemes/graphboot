@@ -7,6 +7,8 @@ import { SQUARE_SIZE } from '../../constants';
 import Weeks from '../../components/Weeks';
 import Tooltip from '../Tooltip';
 
+import './styles.css';
+
 import {
   setDays,
 } from './actions';
@@ -18,9 +20,9 @@ class Calendar extends Component {
 
   render() {
     return (
-      <div style={{position: 'relative'}}>
+      <div className="calendar" style={{position: 'relative'}}>
         <svg
-          className="react-calendar-heatmap"
+          className="calendar__svg"
           width="676"
           height="104"
         >
