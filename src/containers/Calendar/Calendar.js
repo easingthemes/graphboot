@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 
-import { SQUARE_SIZE } from '../../constants';
-
 import Weeks from '../../components/Weeks';
+import LabelsWeek from '../../components/LabelsWeek';
+import LabelsMonth from '../../components/LabelsMonth';
 import Tooltip from '../Tooltip';
 
 import './styles.css';
@@ -26,12 +26,14 @@ class Calendar extends Component {
           width="676"
           height="104"
         >
-          <g transform={`translate(0, ${SQUARE_SIZE})`}>
+          <LabelsMonth />
+          <g transform={`translate(25, 20)`}>
             <Weeks
               initialValues={this.props.initialValues}
               counter={this.props.counter}
             />
           </g>
+          <LabelsWeek />
         </svg>
         <Tooltip />
       </div>

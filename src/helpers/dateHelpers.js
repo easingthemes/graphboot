@@ -54,7 +54,7 @@ export function getDay(dayIndex, weekIndex) {
   const today = new Date(),
     todayIndex = today.getDay(),
     index = WEEKS_TOTAL * 7 - weekIndex * 7 + todayIndex - dayIndex,
-    step = dayIndex >= todayIndex ? -index : index,
+    step = dayIndex === 6 && dayIndex < todayIndex ? index : -index,
     date = shiftDate(today, step),
     dateString = date.toDateString();
   return {
