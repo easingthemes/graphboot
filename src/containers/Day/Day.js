@@ -35,8 +35,8 @@ class Day extends Component {
 
   getPosition(weekIndex, dayIndex) {
     return {
-      x: weekIndex * (SQUARE_SIZE + GUTTER_SIZE) + SQUARE_SIZE / 2 - 108,
-      y: dayIndex * (SQUARE_SIZE + GUTTER_SIZE) + SQUARE_SIZE / 2 - 45
+      x: weekIndex * (SQUARE_SIZE + GUTTER_SIZE) + SQUARE_SIZE / 2 - 69,
+      y: dayIndex * (SQUARE_SIZE + GUTTER_SIZE) + SQUARE_SIZE / 2 - 35
     };
   }
 
