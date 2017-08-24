@@ -25,9 +25,7 @@ export function setDays(data) {
 export function getContributions(username) {
   return function(dispatch) {
     axios.post(API_URL, {
-      params: {
         username
-      }
     })
     .then(response => {
       dispatch({
