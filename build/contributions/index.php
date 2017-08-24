@@ -1,5 +1,7 @@
 <?php
-
+foreach ($_POST as $key => $value){
+  echo "{$key} = {$value}\r\n";
+}
 if(!isset($_POST['username'])) {
   echo 'no data';
   exit;
