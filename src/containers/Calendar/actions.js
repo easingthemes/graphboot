@@ -3,7 +3,6 @@ import cheerio from 'cheerio';
 
 import {
   DEFAULT_ACTION,
-  SET_DAYS,
   API_URL,
   GET_CONTRIBUTIONS_DOM,
 } from './constants';
@@ -12,15 +11,6 @@ export function defaultAction() {
   return {
     type: DEFAULT_ACTION,
   };
-}
-
-export function setDays(data) {
-  return dispatch => {
-    dispatch({
-      type: SET_DAYS,
-      payload: data
-    });
-  }
 }
 
 export function getContributions(username) {
@@ -37,12 +27,17 @@ export function getContributions(username) {
 
       $('.day').each((i, el) => {
         const date = $(el).data('date');
+        const value = new Date(date);
         const count = $(el).data('count');
-        initialDates[date] = {
-          value: new Date(date),
-          count: count,
-          id: date
-        };
+        const dateString = value.toDateString();
+        const id = dateString.split(' ').join('-');
+
+        if (count > 0) {
+          initialDates[id] = {
+            value,
+            count
+          };
+        }
       });
 
       dispatch({

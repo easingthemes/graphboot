@@ -21,7 +21,7 @@ class Week extends PureComponent {
               key={`day-${dayIndex}`}
               dayIndex={dayIndex}
               weekIndex={weekIndex}
-              initialValues={initialValues}
+              initialDays={initialValues}
             />
           );
         })}

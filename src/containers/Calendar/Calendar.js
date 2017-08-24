@@ -9,14 +9,13 @@ import Tooltip from '../Tooltip';
 
 import './styles.css';
 
+import selectCalendar from './selectors';
 import {
-  setDays,
   getContributions,
 } from './actions';
 
 class Calendar extends Component {
   componentDidMount() {
-    this.props.handleSetDays(this.props.initialValuesRandom);
     this.props.handleGetContributions('easingthemes');
   }
 
@@ -31,7 +30,7 @@ class Calendar extends Component {
           <LabelsMonth />
           <g transform={`translate(25, 20)`}>
             <Weeks
-              initialValues={this.props.initialValuesRandom}
+              initialValues={this.props.initialDays}
             />
           </g>
           <LabelsWeek />
@@ -43,11 +42,11 @@ class Calendar extends Component {
 }
 
 Calendar.propTypes = {
-  initialValuesRandom: PropTypes.object
+  initialDays: PropTypes.object
 };
 
 Calendar.defaultProps = {
-  initialValuesRandom: {
+  initialDays: {
     'id': {
       index: 0,
       id: 'id',
@@ -55,13 +54,12 @@ Calendar.defaultProps = {
     }
   }
 };
-
+const mapStateToProps = selectCalendar();
 function mapDispatchToProps(dispatch) {
   return {
-    handleSetDays: data => dispatch(setDays(data)),
     handleGetContributions: data => dispatch(getContributions(data)),
     dispatch,
   };
 }
 
-export default connect(null, mapDispatchToProps)(Calendar);
+export default connect(mapStateToProps, mapDispatchToProps)(Calendar);

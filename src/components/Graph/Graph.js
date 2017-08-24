@@ -21,7 +21,7 @@ class Graph extends Component {
             <div className="mb-5 border border-gray-dark rounded-1 py-2">
               <div className="js-calendar-graph is-graph-loading graph-canvas calendar-graph height-full">
                 <Calendar
-                  initialValuesRandom={getInitialDays(365)}
+                  initialDaysRandom={getInitialDays(3)}
                   counter={30}
                 />
               </div>

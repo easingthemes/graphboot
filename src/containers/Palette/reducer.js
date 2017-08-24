@@ -6,7 +6,7 @@ import {
 } from './constants';
 
 const initialState = fromJS({
-  counter: 1
+  counter: 0
 });
 
 function counterReducer(state = initialState, action) {

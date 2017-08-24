@@ -14,7 +14,16 @@ import {
 
 class Palette extends Component {
   handleClick(color) {
-    const value = getRandomCounter(color.value);
+    const colorValue = color.value;
+    let value;
+
+    if (colorValue === 0) {
+      value = 0;
+    } else if (colorValue === 1) {
+      value = 1;
+    } else {
+      value = getRandomCounter(color.value - 1);
+    }
 
     this.props.handleSetCounter(value);
   }

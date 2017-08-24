@@ -1,7 +1,6 @@
 import { fromJS } from 'immutable';
 import {
   DEFAULT_ACTION,
-  SET_DAYS,
   GET_CONTRIBUTIONS_DOM
 } from './constants';
 
@@ -20,9 +19,6 @@ function calendarReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
-    case SET_DAYS:
-      return state
-        .set('initialDaysRandom', fromJS(action.payload));
     case GET_CONTRIBUTIONS_DOM:
       return state
         .set('initialDays', fromJS(action.payload));

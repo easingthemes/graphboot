@@ -22,10 +22,10 @@ class Day extends Component {
   constructor(props) {
     super(props);
 
-    const { dayIndex, weekIndex, initialValues } = props,
+    const { dayIndex, weekIndex, initialDays } = props,
       day = getDay(dayIndex, weekIndex),
       position = this.getPosition(weekIndex, dayIndex),
-      initialValue = initialValues[day.id] || {};
+      initialValue = initialDays[day.id] || {};
 
     this.state = {
       count: initialValue.count || 0,
@@ -39,6 +39,20 @@ class Day extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const initialDays = this.props.initialDays,
+      nextInitialDays = nextProps.initialDays,
+      id = this.state.id,
+      initialValue = nextInitialDays[id] || {};
+
+    if (initialDays['id'] && !nextInitialDays['id']) {
+      this.setState({
+        count: initialValue.count || 0,
+        initialCount: initialValue.count || 0
+      });
+    }
   }
 
   getPosition(weekIndex, dayIndex) {
@@ -59,15 +73,18 @@ class Day extends Component {
   }
 
   handleClick() {
-    const initialCount = this.state.initialCount;
     const counter = this.props.counter;
+    const initialCount = this.state.initialCount;
     const count = initialCount >= counter ? initialCount : counter;
 
     this.setState({
       count
     }, () => {
       this.props.handleSetTooltip(this.getTooltipData(true));
-      this.props.handleSetCounter(getRandomCounter(counter));
+
+      if (counter !== 0) {
+        this.props.handleSetCounter(getRandomCounter(counter));
+      }
     });
   }
 
@@ -97,7 +114,7 @@ class Day extends Component {
 Day.propTypes = {
   dayIndex: PropTypes.number,
   weekIndex: PropTypes.number,
-  initialValues: PropTypes.object,
+  initialDays: PropTypes.object,
   handleSetTooltip: PropTypes.func,
   counter: PropTypes.number
 };
@@ -105,8 +122,8 @@ Day.propTypes = {
 Day.defaultProps = {
   dayIndex:      0,
   weekIndex:     0,
-  initialValues: {},
-  counter: 1
+  initialDays: {},
+  counter: 0
 };
 
 const mapStateToProps = selectCounter();
