@@ -1,7 +1,7 @@
 /*
  * Github color scale
  */
-.color-github-disabled {
+.color-github-error {
   fill: red;
 }
 .color-github-empty {
@@ -21,4 +21,8 @@
 }
 .color-github-4 {
   fill: #1e6823;
+}
+
+rect {
+  cursor: default;
 }

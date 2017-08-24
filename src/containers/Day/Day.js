@@ -3,10 +3,17 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 
 import { getDay } from '../../helpers/dateHelpers';
+import { getRandomCounter } from '../../helpers/getCounterRange';
+
 import { SQUARE_SIZE, GUTTER_SIZE } from '../../constants';
 
 import Square from '../../components/Square';
 
+import selectCounter from '../Palette/selectors';
+
+import {
+  setCounter
+} from '../Palette/actions';
 import {
   setTooltip,
 } from '../Tooltip/actions';
@@ -21,7 +28,8 @@ class Day extends Component {
       initialValue = initialValues[day.id] || {};
 
     this.state = {
-      count: initialValue.count,
+      count: initialValue.count || 0,
+      initialCount: initialValue.count || 0,
       date: day.date,
       id: day.id,
       x: position.x,
@@ -50,11 +58,16 @@ class Day extends Component {
     }
   }
 
-  handleClick(count) {
+  handleClick() {
+    const initialCount = this.state.initialCount;
+    const counter = this.props.counter;
+    const count = initialCount >= counter ? initialCount : counter;
+
     this.setState({
-      count: count + this.props.counter
+      count
     }, () => {
       this.props.handleSetTooltip(this.getTooltipData(true));
+      this.props.handleSetCounter(getRandomCounter(counter));
     });
   }
 
@@ -85,20 +98,25 @@ Day.propTypes = {
   dayIndex: PropTypes.number,
   weekIndex: PropTypes.number,
   initialValues: PropTypes.object,
-  handleSetTooltip: PropTypes.func
+  handleSetTooltip: PropTypes.func,
+  counter: PropTypes.number
 };
 
 Day.defaultProps = {
-  dayIndex: 0,
-  weekIndex: 0,
-  initialValues: {}
+  dayIndex:      0,
+  weekIndex:     0,
+  initialValues: {},
+  counter: 1
 };
+
+const mapStateToProps = selectCounter();
 
 function mapDispatchToProps(dispatch) {
   return {
     handleSetTooltip: (data) => dispatch(setTooltip(data)),
+    handleSetCounter: (data) => dispatch(setCounter(data)),
     dispatch,
   };
 }
 
-export default connect(null, mapDispatchToProps)(Day);
+export default connect(mapStateToProps, mapDispatchToProps)(Day);

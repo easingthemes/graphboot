@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from 'prop-types';
 
-import { SQUARE_SIZE, GUTTER_SIZE } from '../../constants';
+import { SQUARE_SIZE, GUTTER_SIZE, COLORS } from '../../constants';
 
 import './styles.css';
 
@@ -28,31 +28,31 @@ class Square extends PureComponent {
   }
 
   squareStyle(count) {
-    let color;
+    let colorCode;
     let fill;
 
-    if (count === 0) {
-      fill = '#eeeeee';
-      color = 'empty'
-    } else if (count <= 50) {
-      fill = '#d6e685';
-      color = 1;
-    } else if (count <= 100) {
-      fill = '#8cc665';
-      color = 2;
-    } else if (count <= 200) {
-      fill = '#44a340';
-      color = 3;
-    } else if (count > 200) {
-      fill = '#1e6823';
-      color = 4;
-    } else {
-      fill = 'red';
-      color = 'disabled';
-    }
+      if (count <= COLORS[0].value) {
+        fill = COLORS[0].code;
+        colorCode = 0;
+      } else if (count <= COLORS[1].value) {
+        fill = COLORS[1].code;
+        colorCode = 1;
+      } else if (count <= COLORS[2].value) {
+        fill = COLORS[2].code;
+        colorCode = 2;
+      } else if (count <= COLORS[3].value) {
+        fill = COLORS[3].code;
+        colorCode = 3;
+      } else if (count > COLORS[3].value) {
+        fill = COLORS[4].code;
+        colorCode = 4;
+      } else {
+        fill = 'red';
+        colorCode = 'error';
+      }
 
     return {
-      cssClass: `color-github-${color}`,
+      cssClass: `color-github-${colorCode}`,
       fill: fill
     };
   }

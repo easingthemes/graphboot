@@ -13,7 +13,6 @@ class Weeks extends PureComponent  {
           key={`week-${weekIndex}`}
           weekIndex={weekIndex}
           initialValues={this.props.initialValues}
-          counter={this.props.counter}
         />
       );
     });

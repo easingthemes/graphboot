@@ -22,7 +22,6 @@ class Week extends PureComponent {
               dayIndex={dayIndex}
               weekIndex={weekIndex}
               initialValues={initialValues}
-              counter={this.props.counter}
             />
           );
         })}

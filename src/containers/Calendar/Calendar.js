@@ -30,7 +30,6 @@ class Calendar extends Component {
           <g transform={`translate(25, 20)`}>
             <Weeks
               initialValues={this.props.initialValues}
-              counter={this.props.counter}
             />
           </g>
           <LabelsWeek />
@@ -42,8 +41,7 @@ class Calendar extends Component {
 }
 
 Calendar.propTypes = {
-  initialValues: PropTypes.object,
-  counter: PropTypes.number
+  initialValues: PropTypes.object
 };
 
 Calendar.defaultProps = {
@@ -53,8 +51,7 @@ Calendar.defaultProps = {
       id: 'id',
       date: new Date()
     }
-  },
-  counter: 10
+  }
 };
 
 function mapDispatchToProps(dispatch) {
