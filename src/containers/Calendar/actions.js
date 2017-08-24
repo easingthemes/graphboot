@@ -33,9 +33,16 @@ export function getContributions(username) {
     })
     .then(response => {
       const $ = cheerio.load(response.data);
-      $('.day').each(() => {
+      console.log($('.day'));
+      const dates = $('.day').map((i, el) => {
+        console.log(i, el);
         console.log($(this).data('day'), $(this).data('count'));
+        return {
+          count: $(this).data('count'),
+          date: $(this).data('date')
+        }
       });
+      console.log(dates);
 
       dispatch({
         type: GET_CONTRIBUTIONS_DOM,
