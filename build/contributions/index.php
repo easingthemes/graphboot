@@ -8,7 +8,7 @@ if(!isset($_REQUEST['username'])) {
 }
 
 $url = 'https://github.com/users/' . $_REQUEST['username'] . '/contributions';
-
+echo $url;
 function retrieve_contributions_calendar() {
   return file_get_contents($url);
 }
