@@ -1,4 +1,5 @@
 import axios from 'axios';
+import cheerio from 'cheerio';
 
 import {
   DEFAULT_ACTION,
@@ -31,6 +32,11 @@ export function getContributions(username) {
       responseType: 'text'
     })
     .then(response => {
+      const $ = cheerio.load(response.data);
+      $('.day').each(() => {
+        console.log($(this).data('day'), $(this).data('count'));
+      });
+
       dispatch({
         type: GET_CONTRIBUTIONS_DOM,
         payload: response.data
