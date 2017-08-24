@@ -1,7 +1,7 @@
 <?php
 
 if(!isset($_POST['username'])) {
-  echo '';
+  echo 'no data';
   exit;
 }
 
