@@ -4,12 +4,8 @@ if(!isset($_REQUEST['username'])) {
   exit;
 }
 
-$url = 'https://github.com/users/' . $_REQUEST['username'] . '/contributions';
+$url = 'https://github.com/users/' . $_REQUEST['username'] . '/contributions/';
+$data = file_get_contents($url);
 
-function retrieve_contributions_calendar() {
-  $data = file_get_contents($url);
-  return $data;
-}
-
-echo retrieve_contributions_calendar();
+echo  $data;
 ?>
