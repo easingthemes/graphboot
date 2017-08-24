@@ -45,8 +45,6 @@ export function getContributions(username) {
         };
       });
 
-      console.log('initialDates', initialDates);
-
       dispatch({
         type: GET_CONTRIBUTIONS_DOM,
         payload: initialDates

@@ -16,7 +16,7 @@ import {
 
 class Calendar extends Component {
   componentDidMount() {
-    this.props.handleSetDays(this.props.initialValues);
+    this.props.handleSetDays(this.props.initialValuesRandom);
     this.props.handleGetContributions('easingthemes');
   }
 
@@ -31,7 +31,7 @@ class Calendar extends Component {
           <LabelsMonth />
           <g transform={`translate(25, 20)`}>
             <Weeks
-              initialValues={this.props.initialValues}
+              initialValues={this.props.initialValuesRandom}
             />
           </g>
           <LabelsWeek />
@@ -43,11 +43,11 @@ class Calendar extends Component {
 }
 
 Calendar.propTypes = {
-  initialValues: PropTypes.object
+  initialValuesRandom: PropTypes.object
 };
 
 Calendar.defaultProps = {
-  initialValues: {
+  initialValuesRandom: {
     'id': {
       index: 0,
       id: 'id',
