@@ -33,10 +33,9 @@ export function getContributions(username) {
     })
     .then(response => {
       const $ = cheerio.load(response.data);
-      console.log($('.day'));
       const dates = $('.day').map((i, el) => {
-        console.log(i, el);
-        console.log($(this).data('day'), $(this).data('count'));
+        console.log('-----',$(el));
+        console.log($(el).data('day'), $(el).data('count'));
         return {
           count: $(this).data('count'),
           date: $(this).data('date')
