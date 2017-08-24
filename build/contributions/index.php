@@ -1,13 +1,13 @@
 <?php
-foreach ($_POST as $key => $value){
+foreach ($_REQUEST as $key => $value){
   echo "{$key} = {$value}\r\n";
 }
-if(!isset($_POST['username'])) {
+if(!isset($_REQUEST['username'])) {
   echo 'no data';
   exit;
 }
 
-$url = 'https://github.com/users/' . $_POST['username'] . '/contributions';
+$url = 'https://github.com/users/' . $_REQUEST['username'] . '/contributions';
 
 function retrieve_contributions_calendar() {
   return file_get_contents($url);
