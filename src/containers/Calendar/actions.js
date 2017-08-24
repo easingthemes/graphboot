@@ -33,19 +33,23 @@ export function getContributions(username) {
     })
     .then(response => {
       const $ = cheerio.load(response.data);
-      const dates = $('.day').map((i, el) => {
-        console.log('-----',$(el));
-        console.log($(el).data('day'), $(el).data('count'));
-        return {
-          count: $(this).data('count'),
-          date: $(this).data('date')
-        }
+      const initialDates = {};
+
+      $('.day').each((i, el) => {
+        const date = $(el).data('date');
+        const count = $(el).data('count');
+        initialDates[date] = {
+          value: new Date(date),
+          count: count,
+          id: date
+        };
       });
-      console.log(dates);
+
+      console.log('initialDates', initialDates);
 
       dispatch({
         type: GET_CONTRIBUTIONS_DOM,
-        payload: response.data
+        payload: initialDates
       });
     })
     .catch(error => {
