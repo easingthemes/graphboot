@@ -1,6 +1,10 @@
+import axios from 'axios';
+
 import {
   DEFAULT_ACTION,
   SET_DAYS,
+  API_URL,
+  GET_CONTRIBUTIONS_DOM,
 } from './constants';
 
 export function defaultAction() {
@@ -15,5 +19,23 @@ export function setDays(data) {
       type: SET_DAYS,
       payload: data
     });
+  }
+}
+
+export function getContributions(username) {
+  return function(dispatch) {
+    axios.get(API_URL)
+    .then(response => {
+      dispatch({
+        type: GET_CONTRIBUTIONS_DOM,
+        payload: response.data
+      });
+    })
+    .catch(error => {
+      dispatch({
+        type: GET_CONTRIBUTIONS_DOM,
+        payload: error
+      });
+    })
   }
 }

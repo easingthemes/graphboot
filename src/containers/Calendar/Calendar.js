@@ -11,11 +11,13 @@ import './styles.css';
 
 import {
   setDays,
+  getContributions,
 } from './actions';
 
 class Calendar extends Component {
   componentDidMount() {
     this.props.handleSetDays(this.props.initialValues);
+    this.props.handleGetContributions('easingthemes');
   }
 
   render() {
@@ -56,7 +58,8 @@ Calendar.defaultProps = {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleSetDays: (data) => dispatch(setDays(data)),
+    handleSetDays: data => dispatch(setDays(data)),
+    handleGetContributions: data => dispatch(getContributions(data)),
     dispatch,
   };
 }
